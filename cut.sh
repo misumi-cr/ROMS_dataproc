@@ -26,7 +26,7 @@ function join_data_2 (){
   n=$(expr $2 + 1)
   nnum1=$(printf "%03d\n" "${n}")
   mv -f $cname.$cnum.${1}.${2}.nc $cname.$cnum.${1}_join_data_2.${2}.nc
-  ncrcat $cname.$cnum.${1}_join_data.${2}.nc $cname.$cnum.${1}.$nnum1.nc -o $cname.$cnum.${1}.${2}.nc
+  ncrcat $cname.$cnum.${1}_join_data_2.${2}.nc $cname.$cnum.${1}.$nnum1.nc -o $cname.$cnum.${1}.${2}.nc
 }
 
 ### main ###
