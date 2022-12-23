@@ -10,8 +10,8 @@ function cut_data (){
     exit
   fi
   echo "processing $1 file"
-  mv $cname.$cnum.${1}.${2}.nc $cname.$cnum.${1}org.${2}.nc
-  ncks -d ocean_time,${3},${4} $cname.$cnum.${1}org.${2}.nc -o $cname.$cnum.${1}.${2}.nc
+  mv -f $cname.$cnum.${1}.${2}.nc $cname.$cnum.${1}_cut_data.${2}.nc
+  ncks -d ocean_time,${3},${4} $cname.$cnum.${1}_cut_data.${2}.nc -o $cname.$cnum.${1}.${2}.nc
 }
 
 function join_data_2 (){
@@ -25,8 +25,8 @@ function join_data_2 (){
   echo $cnum
   n=$(expr $2 + 1)
   nnum1=$(printf "%03d\n" "${n}")
-  mv $cname.$cnum.${1}.${2}.nc $cname.$cnum.${1}org.${2}.nc
-  ncrcat $cname.$cnum.${1}org.${2}.nc $cname.$cnum.${1}.$nnum1.nc -o $cname.$cnum.${1}.${2}.nc
+  mv -f $cname.$cnum.${1}.${2}.nc $cname.$cnum.${1}_join_data_2.${2}.nc
+  ncrcat $cname.$cnum.${1}_join_data.${2}.nc $cname.$cnum.${1}.$nnum1.nc -o $cname.$cnum.${1}.${2}.nc
 }
 
 ### main ###
