@@ -21,10 +21,10 @@ function join_data_2 (){
   fi
   echo $cname
   echo $cnum
-  n=$(expr $2 + 1)
+  n=$(expr ${nnum0} + 1)
   nnum1=$(printf "%03d\n" "${n}")
   mv -f $cname.$cnum.${1}.${nnum0}.nc $cname.$cnum.${1}_join_data_2.${nnum0}.nc
-  ncrcat $cname.$cnum.${1}_join_data_2.${nnum0}.nc $cname.$cnum.${1}.$nnum1.nc -o $cname.$cnum.${1}.${nnum0}.nc
+  ncrcat $cname.$cnum.${1}_join_data_2.${nnum0}.nc $cname.$cnum.${1}.${nnum1}.nc -o $cname.$cnum.${1}.${nnum0}.nc
 }
 
 function copy_data (){
