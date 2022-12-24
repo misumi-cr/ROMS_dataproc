@@ -12,7 +12,7 @@ function cut_data (){
   nnum=$2
   echo "processing $1 file"
   mv -f $cname.$cnum.${1}.${nnum}.nc bak/$cname.$cnum.${1}.${nnum}.nc
-  ncks -d ocean_time,${3},${4} bak/$cname.$cnum.${1}_cut_data.${nnum}.nc -o $cname.$cnum.${1}.${nnum}.nc
+  ncks -d ocean_time,${3},${4} bak/$cname.$cnum.${1}.${nnum}.nc -o $cname.$cnum.${1}.${nnum}.nc
 }
 
 function join_data_2 (){
