@@ -11,8 +11,8 @@ function cut_data (){
   fi
   nnum=$2
   echo "processing $1 file"
-  mv -f $cname.$cnum.${1}.${nnum}.nc $cname.$cnum.${1}_cut_data.${nnum}.nc
-  ncks -d ocean_time,${3},${4} $cname.$cnum.${1}_cut_data.${nnum}.nc -o $cname.$cnum.${1}.${nnum}.nc
+  mv -f $cname.$cnum.${1}.${nnum}.nc bak/$cname.$cnum.${1}.${nnum}.nc
+  ncks -d ocean_time,${3},${4} bak/$cname.$cnum.${1}_cut_data.${nnum}.nc -o $cname.$cnum.${1}.${nnum}.nc
 }
 
 function join_data_2 (){
@@ -23,8 +23,8 @@ function join_data_2 (){
   fi
   echo $cname
   echo $cnum
-  mv -f $cname.$cnum.${1}.${nnum0}.nc $cname.$cnum.${1}_join_data_2.${nnum0}.nc
-  ncrcat $cname.$cnum.${1}_join_data_2.${nnum0}.nc $cname.$cnum.${1}.${nnum1}.nc -o $cname.$cnum.${1}.${nnum0}.nc
+  mv -f $cname.$cnum.${1}.${nnum0}.nc bak/$cname.$cnum.${1}.${nnum0}.nc
+  ncrcat bak/$cname.$cnum.${1}.${nnum0}.nc $cname.$cnum.${1}.${nnum1}.nc -o $cname.$cnum.${1}.${nnum0}.nc
 }
 
 function copy_data (){
@@ -41,6 +41,8 @@ function copy_data (){
 cname="h010_l045_v001.190515"
 cnum="101"
 nnum0=070
+
+mkdir -fp bak
 
 n=$(expr ${nnum0} + 1)
 nnum1=$(printf "%03d\n" "${n}")
