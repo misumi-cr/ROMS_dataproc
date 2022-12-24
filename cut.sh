@@ -40,21 +40,21 @@ function copy_data (){
 
 cname="h010_l045_v001.190515"
 cnum="101"
-nnum0=070
+nnum0=076
 
 mkdir -fp bak
 
 n=$(expr ${nnum0} + 1)
 nnum1=$(printf "%03d\n" "${n}")
 
-### 070+071 -> 070
-#cut_data a 0 2
-#cut_data h 0 2
-#cut_data r 0 0
+### 076+077 -> 076
+#cut_data a $nnum0 0 2
+#cut_data h $nnum0 0 2
+#cut_data r $nnum0 0 0
 
 #join_data_2 a
 #join_data_2 h
-#cut_data r 0 0
+#cut_data r $nnum1 0 0
 
 #copy_data a
 #copy_data h
