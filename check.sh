@@ -12,7 +12,7 @@ set a h r
 while [ $# -ge 1 ]
 do
   echo $1
-  ncks -v ocean_time h010_l045_v001.190515.101.${1}.${nnum}.nc | \
+  ncks -v ocean_time ${cname}.${1}.${nnum}.nc | \
   sed -n -e '/ocean_time = [0123456789]/p' | \
   awk '{n=split($0, ary, "="); print(ary[n])}' | \
   awk '{n=split($0, ary, ";"); print(ary[1])}' | \
