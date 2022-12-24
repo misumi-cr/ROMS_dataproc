@@ -42,7 +42,7 @@ cname="h010_l045_v001.190515"
 cnum="101"
 nnum0=076
 
-mkdir -fp bak
+mkdir -p bak
 
 n=$(expr ${nnum0} + 1)
 nnum1=$(printf "%03d\n" "${n}")
