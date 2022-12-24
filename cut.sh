@@ -32,8 +32,8 @@ function rewind_num (){
   if [ ! $# -eq 1 ]; then
     echo "[${0}] One argument must be specified."
   fi
-  cp ${cname}.${cnum}.r.${nnum0}.nc bak/${cname}.${cnum}.r.${nnum0}.nc 
-  cp ${cname}.${cnum}.r.${nnum1}.nc ${cname}.${cnum}.r.${nnum0}.nc 
+  mv ${cname}.${cnum}.${1}.${nnum0}.nc bak/${cname}.${cnum}.${1}.${nnum0}.nc 
+  mv ${cname}.${cnum}.${1}.${nnum1}.nc ${cname}.${cnum}.${1}.${nnum0}.nc 
 }
 
 function copy_data (){
@@ -49,31 +49,23 @@ function copy_data (){
 
 cname="h010_l045_v001.190515"
 cnum="101"
-nnum0=076
+nnum0="076"
 
-mkdir -p org
+mkdir -p bak
 
-set a r w
-while [ $# -ge 1 ]
-do
-  echo $1
-  shift
-done
+n=$(expr ${nnum0} + 1)
+nnum1=$(printf "%03d\n" "${n}")
 
-#n=$(expr ${nnum0} + 1)
-#nnum1=$(printf "%03d\n" "${n}")
-#
-#### 076+077 -> 076
-##cut_data a $nnum0 0 2
-##cut_data h $nnum0 0 2
-##cut_data r $nnum0 0 0
-#
-##join_data_2 a
-##join_data_2 h
-##cut_data r $nnum1 0 0
-#mv ${cname}.${cnum}.r.${nnum1}.nc ${cname}.${cnum}.r.${nnum0}.nc 
-#
-#
-##copy_data a
-##copy_data h
-##copy_data r
+### 076+077 -> 076
+#cut_data a $nnum0 0 2
+#cut_data h $nnum0 0 2
+#cut_data r $nnum0 0 0
+
+#join_data_2 a
+#join_data_2 h
+#cut_data r $nnum1 0 0
+#rewind_num r
+
+#copy_data a
+#copy_data h
+#copy_data r
